@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}
+{{title}}
+{% endblock title %}
+
+{% block main %}
+
+{% if errors %}
+<script>
+    alert('{{errors}}')
+</script>
+{% endif %}
+
+<main class="container bg-white p-3">
+    <div style="max-width: 300px;" class="m-auto">
+        <h1>Login</h1>
+        <form action="" method="post">
+        <input type='hidden' name='csrfmiddlewaretoken' value='{{ csrf_token }}'>
+        <div>
+            <label>Email</label>
+            <p><input type="email" class="form_control" name="email" placeholder="email">
+        </div>
+        <div>
+            <label>Password</label>
+            <p><input type="password" class="form_control" name="password" placeholder="password">
+        </div>
+        
+        <div>
+            <button type="submit">Login</button>
+        </div>
+    
+        </form>
+    </div>
+</main>
+
+{% endblock main %}

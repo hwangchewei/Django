@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+{{title}}
+{% endblock title %}
+
+{% block head %}
+
+<script src="{% static 'js/captcha.js' %}"></script>
+
+
+{% endblock head %}
+
+{% block main %}
+{% if errors %}
+<script>
+    
+    test = JSON.parse('{{errors|safe}}')
+    var error_array = new Array
+    for (t in test){
+       if(t =='__all__'){
+        error_array.push(test[t][0].message)
+        continue
+       }
+       if(test[t][0].message == 'This field is required.'){
+        error_array.push(t+' '+'empty')
+        continue
+       }
+       console.log(typeof(test[t][0].message))
+       if(test[t][0].message.includes('Userdata')){
+        error_array.push(t+' '+'already exist')
+        continue
+       }
+        error_array.push(t+' '+test[t][0].message)
+        console.log(t+' '+test[t][0].message)
+    }
+    console.log(error_array)
+    alert(error_array.join('\n'))
+</script>
+{% endif %}
+
+<main class="container bg-white p-3">
+    <div style="max-width: 300px;" class="m-auto">
+        <h1>Login</h1>
+        <form action="" method="post">
+            <input type='hidden' name='csrfmiddlewaretoken' value='{{ csrf_token }}'>
+            <div class="mb-3">
+                <label>Name</label>
+                <input type="text" class="form-control" name="name" placeholder="name">
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" placeholder="password">
+            </div>
+            <div>
+                <label>Valid password</label>
+                <input type="password" class="form-control" name="valid_p" placeholder="valid_p">
+            </div>
+            <div>
+                <label>Email</label>
+                <input type="email" class="form-control" name="email" placeholder="email" id='email'>
+            </div>
+            <div class="input-group mb-3">
+                <label>Captcha</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="captcha"  name = 'captcha'>
+                    <button class="btn btn-outline-secondary" type="button" id="captcha-btn" onclick='myfunction()'>Button</button>
+                    
+                </div>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+    
+        </form>
+    </div>
+</main>
+
+{% endblock main %}
+
+
+

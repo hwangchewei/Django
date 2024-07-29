@@ -42,22 +42,22 @@
           
                   <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="/" class="nav-link px-2 text-secondary">首頁</a></li>
-                    <li><a href="{% url "blog:pub_blog" %}" class="nav-link px-2 text-white">功能</a></li>
+                    <li><a href="{% url "blog:pub_blog" %}" class="nav-link px-2 text-white">發佈</a></li>
                   </ul>
           
-                  <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                  <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" name="search">
                     <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
                   </form>
                   {% if status %}
                   <div class="me-lg-3">
                     {{username}}
                   </div>
-                  <a href='logout'>
+                  <a href='/logout'>
                     <button type="button" class="btn btn-outline-light me-2" >登出</button>
                   </a>
                   {% else %}
                   <div class="text-end">
-                    <a href='login'>
+                    <a href='/login'>
                       <button type="button" class="btn btn-outline-light me-2" >登入</button>
                     </a>
                     <a href='register'>

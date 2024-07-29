@@ -22,17 +22,20 @@
         error_array.push(test[t][0].message)
         continue
        }
-       if(test[t][0].message == 'This field is required.'){
+       else if(test[t][0].message == 'This field is required.'){
         error_array.push(t+' '+'empty')
         continue
        }
        console.log(typeof(test[t][0].message))
-       if(test[t][0].message.includes('Userdata')){
+       else if(test[t][0].message.includes('Userdata')){
         error_array.push(t+' '+'already exist')
         continue
        }
+       else{
         error_array.push(t+' '+test[t][0].message)
         console.log(t+' '+test[t][0].message)
+       }
+        
     }
     console.log(error_array)
     alert(error_array.join('\n'))

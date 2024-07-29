@@ -69,3 +69,10 @@ class Blog(models.Model):
     text = models.TextField()
     date_time = models.DateTimeField(auto_now_add=True,null=True)
     
+class Blog_comment(models.Model):
+
+    c_name = models.CharField(max_length=100)
+    comment = models.TextField()
+    date_time = models.DateTimeField(auto_now_add=True,null=True)
+    blog_ky = models.ForeignKey("Blog",on_delete=models.CASCADE,related_name='comments')
+

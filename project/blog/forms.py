@@ -1,6 +1,6 @@
 from typing import Any
 from django import forms
-from .models import Userdata,Captcha,Blog
+from .models import Userdata,Captcha,Blog,Blog_comment
 
 class RegisterForm(forms.ModelForm):
    
@@ -39,3 +39,10 @@ class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
         exclude = ['name']
+        
+
+class Blog_commentForm(forms.ModelForm):
+    
+    class Meta:
+        model = Blog_comment
+        fields = ["comment"]      
